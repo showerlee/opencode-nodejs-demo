@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   min-height: 100vh;
   color: #ffffff;
   line-height: 1.6;
@@ -25,12 +25,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #555555 0%, #777777 100%);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  background: linear-gradient(135deg, #777777 0%, #555555 100%);
 }
 
 /* App Container */
@@ -74,7 +74,7 @@ body {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background: linear-gradient(90deg, #555555, #777777, #999999, #bbbbbb);
   background-size: 400% 400%;
   animation: gradientShift 3s ease infinite;
 }
@@ -171,7 +171,7 @@ body {
 }
 
 .products-section::before {
-  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  background: linear-gradient(90deg, #666666, #888888);
 }
 
 .server-section:hover,
@@ -246,7 +246,7 @@ body {
 /* Modern Buttons */
 .refresh-btn,
 .add-btn {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: linear-gradient(135deg, #666666 0%, #888888 100%);
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -263,7 +263,7 @@ body {
   text-transform: uppercase;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .refresh-btn {
@@ -313,7 +313,7 @@ body {
 
 /* Error States */
 .error {
-  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  background: linear-gradient(135deg, #555555 0%, #666666 100%);
   color: white;
   padding: 1.5rem;
   border-radius: 16px;
@@ -322,7 +322,7 @@ body {
   justify-content: space-between;
   align-items: center;
   animation: shake 0.5s ease;
-  box-shadow: 0 4px 20px rgba(255, 117, 140, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -366,7 +366,7 @@ body {
   width: 60px;
   height: 60px;
   border: 3px solid rgba(255, 255, 255, 0.1);
-  border-top-color: #4facfe;
+  border-top-color: #888888;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -400,7 +400,7 @@ body {
 
 .form-group label::after {
   content: '*';
-  color: #ff758c;
+  color: #999999;
   margin-left: 0.25rem;
 }
 
@@ -429,9 +429,9 @@ body {
 .product-input:focus,
 .product-textarea:focus {
   outline: none;
-  border-color: #4facfe;
+  border-color: #888888;
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
+  box-shadow: 0 0 0 3px rgba(136, 136, 136, 0.2);
   transform: translateY(-2px);
 }
 
@@ -517,7 +517,7 @@ body {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  background: linear-gradient(90deg, #666666, #888888);
 }
 
 .product-item:hover {
@@ -551,12 +551,12 @@ body {
 .product-price {
   font-size: 1.75rem;
   font-weight: 800;
-  color: #00f2fe;
-  background: rgba(0, 242, 254, 0.1);
+  color: #cccccc;
+  background: rgba(153, 153, 153, 0.1);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   white-space: nowrap;
-  border: 2px solid rgba(0, 242, 254, 0.2);
+  border: 2px solid rgba(153, 153, 153, 0.2);
   backdrop-filter: blur(10px);
 }
 
@@ -596,21 +596,21 @@ body {
 }
 
 .edit-btn {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: linear-gradient(135deg, #666666 0%, #888888 100%);
   color: white;
-  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .delete-btn {
-  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  background: linear-gradient(135deg, #666666 0%, #777777 100%);
   color: white;
-  box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .save-btn {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: linear-gradient(135deg, #666666 0%, #888888 100%);
   color: white;
-  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .cancel-btn {
@@ -628,11 +628,11 @@ body {
 }
 
 .edit-btn:hover {
-  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .delete-btn:hover {
-  box-shadow: 0 8px 25px rgba(255, 117, 140, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .edit-btn::before {
