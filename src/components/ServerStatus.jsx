@@ -32,11 +32,30 @@ function ServerStatus() {
       <h3>Server Status</h3>
       <div className="status-info">
         <div className="status-indicator">
-          <span className="status-text">{loading ? 'Checking...' : status}</span>
+          <span className="status-text">
+            {loading ? (
+              <>
+                <span style={{ display: 'inline-block', animation: 'pulse 1.5s infinite' }}>
+                  🔄
+                </span> Checking server status...
+              </>
+            ) : (
+              <>
+                <span style={{ display: 'inline-block', animation: 'bounce 2s infinite', marginRight: '8px' }}>
+                  {status.includes('✅') ? '✅' : '❌'}
+                </span>
+                {status}
+              </>
+            )}
+          </span>
         </div>
         {lastChecked && (
           <p className="last-checked">
-            Last checked: {new Date(lastChecked).toLocaleTimeString()}
+            ⏰ Last checked: {new Date(lastChecked).toLocaleTimeString([], { 
+              hour: '2-digit', 
+              minute: '2-digit',
+              second: '2-digit'
+            })}
           </p>
         )}
         <button 
@@ -44,7 +63,16 @@ function ServerStatus() {
           className="refresh-btn"
           disabled={loading}
         >
-          {loading ? 'Refreshing...' : 'Refresh Status'}
+          {loading ? (
+            <>
+              <span style={{ display: 'inline-block', animation: 'spin 1s linear infinite' }}>
+                🔄
+              </span>
+              Refreshing...
+            </>
+          ) : (
+            '🔄 Refresh Status'
+          )}
         </button>
       </div>
     </div>

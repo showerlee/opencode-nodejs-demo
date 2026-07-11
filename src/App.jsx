@@ -94,7 +94,23 @@ function App() {
             )}
             
             {loading ? (
-              <div className="loading">Loading products...</div>
+              <div className="loading">
+                <div style={{ 
+                  fontSize: '1.3rem', 
+                  fontWeight: '500',
+                  marginBottom: '1rem',
+                  color: 'rgba(255, 255, 255, 0.9)'
+                }}>
+                  Loading products...
+                </div>
+                <div style={{ 
+                  fontSize: '0.95rem',
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  animation: 'pulse 2s infinite'
+                }}>
+                  Please wait while we fetch your products 🚀
+                </div>
+              </div>
             ) : (
               <ProductList 
                 products={products} 
