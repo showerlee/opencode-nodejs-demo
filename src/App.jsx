@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
-import TodoList from './components/TodoList';
-import AddTodo from './components/AddTodo';
+import ProductList from './components/ProductList';
+import AddProduct from './components/AddProduct';
 import ServerStatus from './components/ServerStatus';
 import './App.css';
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchTodos = async () => {
+  const fetchProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/todos');
-      if (!response.ok) throw new Error('Failed to fetch todos');
+      const response = await fetch('/api/products');
+      if (!response.ok) throw new Error('Failed to fetch products');
       const data = await response.json();
-      setTodos(data);
+      setProducts(data);
       setError(null);
     } catch (err) {
       setError(err.message);
@@ -25,47 +25,46 @@ function App() {
   };
 
   useEffect(() => {
-    fetchTodos();
+    fetchProducts();
   }, []);
 
-  const addTodo = async (text) => {
+  const addProduct = async (productData) => {
     try {
-      const response = await fetch('/api/todos', {
+      const response = await fetch('/api/products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text })
+        body: JSON.stringify(productData)
       });
-      if (!response.ok) throw new Error('Failed to add todo');
-      const newTodo = await response.json();
-      setTodos([...todos, newTodo]);
+      if (!response.ok) throw new Error('Failed to add product');
+      const newProduct = await response.json();
+      setProducts([...products, newProduct]);
     } catch (err) {
       setError(err.message);
     }
   };
 
-  const toggleTodo = async (id) => {
+  const updateProduct = async (id, productData) => {
     try {
-      const todo = todos.find(t => t.id === id);
-      const response = await fetch(`/api/todos/${id}`, {
+      const response = await fetch(`/api/products/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ completed: !todo.completed })
+        body: JSON.stringify(productData)
       });
-      if (!response.ok) throw new Error('Failed to update todo');
-      const updatedTodo = await response.json();
-      setTodos(todos.map(t => t.id === id ? updatedTodo : t));
+      if (!response.ok) throw new Error('Failed to update product');
+      const updatedProduct = await response.json();
+      setProducts(products.map(p => p.id === id ? updatedProduct : p));
     } catch (err) {
       setError(err.message);
     }
   };
 
-  const deleteTodo = async (id) => {
+  const deleteProduct = async (id) => {
     try {
-      const response = await fetch(`/api/todos/${id}`, {
+      const response = await fetch(`/api/products/${id}`, {
         method: 'DELETE'
       });
-      if (!response.ok) throw new Error('Failed to delete todo');
-      setTodos(todos.filter(t => t.id !== id));
+      if (!response.ok) throw new Error('Failed to delete product');
+      setProducts(products.filter(p => p.id !== id));
     } catch (err) {
       setError(err.message);
     }
@@ -74,8 +73,8 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>React + Node.js Demo</h1>
-        <p>A full-stack todo application</p>
+        <h1>Product Management System</h1>
+        <p>Node.js + React Demo - Matching Java Project Interface</p>
       </header>
 
       <main className="main">
@@ -84,23 +83,23 @@ function App() {
             <ServerStatus />
           </div>
           
-          <div className="todos-section">
-            <AddTodo onAdd={addTodo} />
+          <div className="products-section">
+            <AddProduct onAdd={addProduct} />
             
             {error && (
               <div className="error">
                 Error: {error}
-                <button onClick={fetchTodos}>Retry</button>
+                <button onClick={fetchProducts}>Retry</button>
               </div>
             )}
             
             {loading ? (
-              <div className="loading">Loading todos...</div>
+              <div className="loading">Loading products...</div>
             ) : (
-              <TodoList 
-                todos={todos} 
-                onToggle={toggleTodo} 
-                onDelete={deleteTodo} 
+              <ProductList 
+                products={products} 
+                onUpdate={updateProduct} 
+                onDelete={deleteProduct} 
               />
             )}
           </div>
@@ -108,7 +107,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <p>Built with React, Node.js, Express, and Vite</p>
+        <p>Built with React, Node.js, Express, and Vite | Compatible with Java Spring Boot API</p>
       </footer>
     </div>
   );

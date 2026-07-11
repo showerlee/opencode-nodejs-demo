@@ -8,11 +8,11 @@ function ServerStatus() {
   const checkServer = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/health');
+      const response = await fetch('/.well-known/health');
       if (!response.ok) throw new Error('Server error');
       const data = await response.json();
-      setStatus(`✅ ${data.status}`);
-      setLastChecked(data.timestamp);
+      setStatus(`✅ ${data.status} (v${data.apiVersion})`);
+      setLastChecked(data.datetime);
     } catch (error) {
       setStatus('❌ Server unreachable');
       setLastChecked(new Date().toISOString());
